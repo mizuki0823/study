@@ -7,26 +7,29 @@
 #define abs(a) (a>0?a:-a)
 #define swap(a,b) (a ^= b ^= a ^= b)
 
-char f(char []);
+void f(int);
 
 int main () {
-    char s[3];
+    int n;
 
     printf("入力： ");
-    scanf("%s", s);
-    printf("出力： = %c\n", f(s));
+    scanf("%d", &n);
+    printf("出力：\n");
+    f(n);
     return 0;
 }
 
-char f(char str[]){
-    char c1, c2;
+void f(int x){
+    int i;
 
-    c1 = str[0] - '0';
-    if(c1 > 9)
-        c1 = str[0] - 'A' + 10;
-    c2 = str[1] - '0';
-    if(c2 > 9)
-        c2 = str[1] - 'A' + 10;
+    if(x < 1)
+        return;
 
-    return c2 + (c1 << 4);
+    for(i = 0; i < x; i ++)
+        printf("+ ");
+    printf("\n");
+    f(x - 1);
+    for(i = 0; i < x; i ++)
+        printf("* ");
+    printf("\n");
 }
