@@ -7,29 +7,21 @@
 #define abs(a) (a>0?a:-a)
 #define swap(a,b) (a ^= b ^= a ^= b)
 
-void f(int);
-
 int main () {
-    int n;
+    char c;
+    int n, k;
 
-    printf("入力： ");
-    scanf("%d", &n);
-    printf("出力：\n");
-    f(n);
+    printf("入力：");
+
+    n = 0; k = 0;
+    while (( c = getchar() ) != '\n'){
+        n *= 10;
+        n += c - '0';
+        k++;
+    }
+
+    printf("出力：%d（桁数 = %d）\n", n, k);
     return 0;
-}
 
-void f(int x){
-    int i;
 
-    if(x < 1)
-        return;
-
-    for(i = 0; i < x; i ++)
-        printf("+ ");
-    printf("\n");
-    f(x - 1);
-    for(i = 0; i < x; i ++)
-        printf("* ");
-    printf("\n");
 }
