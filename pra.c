@@ -38,7 +38,11 @@ int main () {
 // 結果的に理解できているなら問題ないかと
 /* #include <stdio.h>
 #include <string.h>
-#include <math.h>
+#include <math.h> while( x > 0 ){
+        a[k] = x & 1;
+        x >>= 1;
+        k ++;
+    }
 
 #define max(a,b) (a>b?a:b)
 #define min(a,b) (a<b?a:b)
@@ -57,4 +61,7 @@ int main () {
 // ページ超えたらとは?どこにいるかは左のLiveShareメニューから確認できる
 // 開いているディレクトリは全部閲覧可能
 // だから本来は~/Desktop/oonishi をVSCodeで開くのが良い
-// tips: control + / でコメントアウト/インの切り替えできるよ
+// code コマンドをインストールしておけば、ターミナルで　o-nishi@onishi-ThinkPad-E490:~ $ cd desktop/oonishi; code . で開ける==もしくはo-nishi@onishi-ThinkPad-E490:~ $ code desktop/oonishi
+// ctrl + shift + p 押したあとに command で検索すればコマンドがインストールできるはず
+//  tips: control + / でコメントアウト/インの切り替えできるよ
+

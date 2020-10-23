@@ -29,7 +29,7 @@ int main () {
 
     for(int j = 0; j < 100; j ++){
             z = b[j] * b[j] + b[j + 1] * b[j + 1];
-            if(z < 1){
+            if(z <= 1){
                 ++p;
             }
 

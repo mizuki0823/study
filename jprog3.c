@@ -10,7 +10,7 @@ int main () {
         x = (double)rand() / RAND_MAX;
         y = (double)rand() / RAND_MAX;
         b = x * x + y * y;
-        if(b < 1){
+        if(b <= 1){
             p++;
         }
 
