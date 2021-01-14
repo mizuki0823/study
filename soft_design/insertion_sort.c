@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h> 
+#include <math.h>
+#include <time.h>
+
+#define max(a,b) (a>b?a:b)
+#define min(a,b) (a<b?a:b)
+#define abs(a) (a>0?a:-a)
+#define swap(a,b) (a ^= b ^= a ^= b)
+#define N 10
+
+int search(int*, int, int);
+void insertion_sort(int*, int, int);
+
+int main () {
+    int ary[N];
+    int i;
+    int result;
+    int asc =1;
+    srand(time(NULL));
+
+    for(i=0; i<N; i++){
+        ary[i] = rand() % 10;
+    }
+    printf("ソート前 ");
+    for(i=0; i<N; i++){
+        printf("%d ", ary[i]);
+    }
+    printf("\n");
+    printf("ソート後 ");
+    insertion_sort(ary, N, asc);
+    for(i=0; i<N; i++){
+        printf("%d ", ary[i]);
+    }
+    printf("\n");
+    result=search(ary,N,asc);
+    if(result == 1){
+        printf("この配列はソート済みです\n");
+    } 
+    else{
+        printf("この配列はソート済みではありません\n");
+    }
+    return 0;
+}
+
+int search(int *ary, int len, int asc){
+    int i;
+
+    if(asc==0){
+        for(i=0;i<len-1;i++){
+            if(ary[i]<ary[i+1]){
+                return 0;
+            }
+        }
+        return 1;        
+    }
+    else{
+        for(i=0;i<len-1;i++){
+            if(ary[i]>ary[i+1]){
+                return 0;
+            }
+        }
+        return 1;
+    }
+}
+
+void insertion_sort(int *ary, int len, int asc){
+    int i,j;
+    int idx;
+    int tmp;
+
+    for(i=1; i<=len-1; i++){
+        for(j=i;j>=1; j--){
+            if((asc && ary[j-1]>ary[j]) || (!asc && ary[j-1]<ary[j])){
+                tmp=ary[j-1];
+                ary[j-1]=ary[j];
+                ary[j]=tmp;
+            }
+            else{
+                break;
+            }
+        }
+    }
+
+}

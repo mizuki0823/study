@@ -19,6 +19,7 @@ int main () {
         }
     }
     
+
     return 0;
 }
 
@@ -35,6 +36,4 @@ int bin(int x, int y){
     else{
         return bin(x-1, y-1) + bin(x-1, y);
     }
-
-
 }
