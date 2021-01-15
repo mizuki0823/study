@@ -154,12 +154,15 @@ void saveM(FILE *fp, MATRIX*m){
     int i,j;
     for(i=0; i<m->nrow; i++){
         for(j=0; j<m->ncol; j++){
-            fprintf(fp, "%lf ", &m->data[i][j]);
+            //                  ↓ ポインタになっている
+            fprintf(fp, "%lf ", m->data[i][j]);
         }
         
         fprintf(fp, "%lf", m->data[i][m->ncol-1]);
         if(i != m->nrow-1){
-            fprintf(fp, '\n');  
+            //          ↓ 文字列ではなく文字になっている（fputc とかなら文字 '' でいいけど、fprintf なら文字列 "" じゃないといけない）
+            fprintf(fp, "\n");  //ここはこれでいいかな
+            // いいと思う
         }
     }
 }

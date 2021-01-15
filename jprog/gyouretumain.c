@@ -53,7 +53,7 @@ int main () {
         printf("閉じれませんでした\n");
         exit(EXIT_FAILURE);
     }
-    if(fm == NULL){
+    if(fm != NULL){
         freeM(fm);
     }
     printf("loaded\n");

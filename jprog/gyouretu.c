@@ -27,7 +27,9 @@ MATRIX* transM(MATRIX* m);
 MATRIX* loadM(FILE *fp);
 MATRIX* saveM(FILE *fp, MATRIX* m);
 
-int main () {
+// こっちにも main 関数あったから怒られてますね
+//gyouretu.cっている？
+int main_old () {
     MATRIX *m1 = allocM(2,2);
     MATRIX *m2 = allocM(2,2);
     MATRIX *m = allocM(2,1);
