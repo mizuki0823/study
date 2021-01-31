@@ -97,7 +97,7 @@ MATRIX* transM(MATRIX*m){
     int i,j;
     MATRIX *result = allocM(m->ncol, m->nrow);
 
-     for(i=0; i<m->ncol; i++){
+    for(i=0; i<m->ncol; i++){
             for(j=0; j<m->nrow; j++){
                 result->data[i][j] = m->data[j][i];
             }
@@ -105,39 +105,40 @@ MATRIX* transM(MATRIX*m){
         return result; 
 }
 
+//列は空白，行は改行コードで区切る
 MATRIX* loadM(FILE *fp){
-   char row[MAX_LEN];
-   int nrow,ncol,cncol;
+    char row[MAX_LEN];
+    int nrow,ncol,cncol;
 
-   while (fgets(row, MAX_LEN, fp) != NULL) {
-       int len = strlen(row);
-       if(len < MAX_LEN-1 || (len == MAX_LEN && row[MAX_LEN-2] == '\n')){
-           nrow++;
-           ncol=0;
-           for(int i=0; i<len; i++){
-               if(row[i]== ' '){
-                   ncol++;
-               }
-           }
-           ncol++;
-           if(cncol == 0){
-               cncol = ncol;
-           }
-           else{
-               printf("ncol=%d cncol=%d\n", ncol, cncol);
-               if(ncol != cncol){
-                   printf("列数が異なる\n");
-                   
-                   return NULL;
-               }
-           }
-       }
-       else{
-           printf("行の最大文字数を超えた\n");
-           return NULL;
-       }
+    while (fgets(row, MAX_LEN, fp) != NULL) {
+        int len = strlen(row);
+        if(len < MAX_LEN-1 || (len == MAX_LEN && row[MAX_LEN-2] == '\n')){
+            nrow++;
+            ncol=0;
+            for(int i=0; i<len; i++){
+                if(row[i]== ' '){
+                    ncol++;
+                }
+            }
+            ncol++;
+            if(cncol == 0){
+                cncol = ncol;
+            }
+            else{
+                printf("ncol=%d cncol=%d\n", ncol, cncol);
+                if(ncol != cncol){
+                    printf("列数が異なる\n");
+                    
+                    return NULL;
+                }
+            }
+        }
+        else{
+            printf("行の最大文字数を超えた\n");
+            return NULL;
+        }
 
-   }
+    }
 
     MATRIX *loaded = allocM(nrow,ncol);
 

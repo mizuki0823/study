@@ -188,6 +188,8 @@ MATRIX* transM(MATRIX*m){
         return result; 
 }
 
+//先生のloadM見てきたんだけど私の仕様みたしてないかもそもそもretu
+// なるほど…
 MATRIX* loadM(FILE *fp){
    char row[MAX_LEN];
    int nrow,ncol,cncol;

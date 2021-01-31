@@ -2,8 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-// #include "matrix.h"2重 include されているようなのでひとまずこっちでの include やめますか　りょ
+// #include "matrix.h" 2重 include されているようなのでひとまずこっちでの include やめますか　りょ
+// ↑　これやめた関係だと思う…
+// コンパイルするのは gauss.c なので、そのときには gauss.c が include しているので大丈夫のはず
 
+//↓ここってなんでMATRIXの文字白くなってるんだろ　ってことはやって大丈夫だった？そうか…
 MATRIX* gauss(MATRIX*A, MATRIX*B){
     int k, i, j;
 
@@ -23,18 +26,33 @@ MATRIX* gauss(MATRIX*A, MATRIX*B){
     //これは…？hou
     // nan になっているので、ありえない計算(0で割るとか)がされたっぽい
 
-    for(k=0; k < A->nrow-1; k++){//k列目の前進消去
+    // 無限ループになっているので、それぞれの終了条件に関連してる変数を出力しますか
+    // 変えてみますか（よくわかっていない）
+
+    // よく考えたらループしてるのここじゃなくて printMとかなのでは
+    // 出力の処理が無限ループしてるので
+    //どゆこと？あー
+    //printMとloadMは多分作った時にちゃんとうごいてるからgaussが悪そう　うん
+    // じゃあ無限ループしているところを特定しないとだね ひたすら printf してどこで詰まっているか確認しよう
+    // こことは限らないので、main 関数からやっていきましょう
+    //中身が壊滅的にへんだとわかったのでじかんがあるときに直します　今日はありがとうございましたー
+    for(k=0; k < A->nrow-1; k++){//k列目の前進消去　
         // k = 0 だとすると、
         for(i=k+1; i < A->nrow;i++){//i行目の消去
             double alpha = A->data[i][k] / A->data[k][k];
+            printf("alpha=%lf\n", alpha);
 
             for(j=0; j < A->ncol; j++){//j行目の消去
-                A->data[i][j] -= alpha /
-                A->data[k][k] * A->data[k][j];
+                A->data[i][j] = alpha * A->data[k][k] - A->data[i][j];
+                printf("A\n");
+                printM(A);
             }
             B->data[i][0] -= alpha /
             A->data[k][k] * B->data[0][i];
+            printf("B\n");
+            printM(B);
         }
+        //printf("%lf%lf\n", k, A->ncol-1, i, A->nrow, )
         // ↑の処理がされることで、一番左の1列を0にしてる ありがとうございました お疲れ様です
         //ここの計算がへんってことよね　k+1しただけで終わらなくなったのはなんなんだろう　うーん
         // 謎です…
