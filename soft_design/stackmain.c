@@ -9,14 +9,22 @@
 #define swap(a,b) (a ^= b ^= a ^= b)
 
 #include "stack.h"
+#include "stackf.c"
 
 
 int main () {
     MyStack *s= allocS(3);
+    //push test
     printS(s);
     pushS(s,1);
     printS(s);
-    pushS(s);
+    pushS(s, 2);
+    printS(s);
+
+    //pop test
+    printf("pop: %d\n", 1);
+    popS(s);
+    printS(s);
     
     return 0;
 }

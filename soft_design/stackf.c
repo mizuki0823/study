@@ -43,8 +43,19 @@ int pushS(MyStack *s, int value){
 
 int popS(MyStack *s){
 
+    if(s->size <=0){
+        return -1;
+    }
+    s->size--;
+
+    return s->innerStack[s->size];//配列は０から始まるので-された後の値が出したい値になる
+
 }
 
 int peekS(MyStack *s){
+    if(s->size <= 0){
+        return -1;
+    }
+    return s->innerStack[s->size-1];
 
 }

@@ -9,11 +9,11 @@ typedef struct
 } MyStack;
 
 MyStack *allocS(int);
-void freeS(MyStack);
-void printS(MyStack);
-int pushS(MyStack, int);
-int popS(MyStack);
-int peekA(MyStack);
+void freeS(MyStack*);
+void printS(MyStack*);
+int pushS(MyStack*, int);
+int popS(MyStack*);
+int peekA(MyStack*);
 
 
 #endif
